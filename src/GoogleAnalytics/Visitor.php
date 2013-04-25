@@ -194,7 +194,7 @@ class Visitor {
 	public function fromServerVar(array $value) {
 		if(!empty($value['REMOTE_ADDR'])) {
 			$ip = null;
-			foreach(array('X_FORWARDED_FOR', 'REMOTE_ADDR') as $key) {
+			foreach(array('HTTP_X_FORWARDED_FOR', 'REMOTE_ADDR') as $key) {
 				if(!empty($value[$key]) && !$ip) {
 					$ips = explode(',', $value[$key]);
 					$ip  = trim($ips[(count($ips) - 1)]);
